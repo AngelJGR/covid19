@@ -1,0 +1,16 @@
+.content {
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+.content .chart-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content .chart-content .chart {
+    width: 45%;
+    height: 500px;
+    margin-left:auto;
+    margin-right:auto;
+}

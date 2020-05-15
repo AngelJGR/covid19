@@ -1,0 +1,44 @@
+<h1>Worldwide Coronavirus Cases</h1>
+<div class="date">
+    <span>Last updated: {{summary?.Date | date}}</span>
+    <mat-spinner *ngIf="spinner" diameter="20"></mat-spinner>
+</div>
+<div class="cards">
+    <div class="card">
+        <div class="card-title">
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+            <span>Confirmed Cases</span>
+        </div>
+        <div class="card-number">
+            <div class="spinner">
+                <mat-spinner *ngIf="spinner" diameter="40"></mat-spinner>
+            </div>
+            <span>{{summary?.Global.TotalConfirmed | number}}</span>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-skull-crossbones"></i>
+            <span>Deaths</span>
+        </div>
+        <div class="card-number">
+            <div class="spinner">
+                <mat-spinner *ngIf="spinner" diameter="40"></mat-spinner>
+            </div>
+            <span>{{summary?.Global.TotalDeaths | number}}</span>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            <span>Recovered Cases</span>
+        </div>
+        <div class="card-number">
+            <div class="spinner">
+                <mat-spinner *ngIf="spinner" diameter="40"></mat-spinner>
+            </div>
+            <span>{{summary?.Global.TotalRecovered | number}}</span>
+        </div>
+    </div>
+</div>
+

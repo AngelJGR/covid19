@@ -12,25 +12,24 @@ import { DataService } from 'src/app/services/data.service';
 export class ResumeComponent implements OnInit {
   summary;
   spinner:boolean = true;
-
+  
   constructor( 
     public _covidService:CovidService,
-    private _snakcBar:MatSnackBar,
-    private _dataService:DataService
+    private _snakcBar:MatSnackBar
   ) { }
-
+  
   ngOnInit() {
-    this._covidService.getSummary()
-      .subscribe(data => {
-        console.log(data.Countries);
-        this.summary = data;
-        this._dataService.countries$ = data.Countries;
-        this.spinner = false;
-      },
-      (error) => {
-        this._snakcBar.open(error.message, 'Close');
-        this.spinner = false;
-      });
+    this._covidService.getSummary();
+    this._covidService.getSummaryDataListener()
+    .subscribe(data => {
+      console.log(data);
+      this.summary = data;
+      // this._dataService.countries$ = data.Countries;
+      this.spinner = false;
+    },
+    (error) => {
+      this._snakcBar.open(error.message, 'Close');
+      this.spinner = false;
+    });
   }
 }
-

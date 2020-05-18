@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
+import { CovidService } from 'src/app/services/covid.service';
+
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-top',
@@ -8,13 +11,28 @@ import { Observable } from 'rxjs';
   styleUrls: ['./top.component.css']
 })
 export class TopComponent implements OnInit {
+  summary;
+  spinner:boolean = true;
+  
+  public countries$:any[]=[];
 
-  public countries$:Observable<any[]>;
 
-  constructor( public _dataService:DataService ) { }
+  constructor(   public _covidService:CovidService,
+    private _snakcBar:MatSnackBar) { }
 
   ngOnInit(): void {
-    this.countries$ = this._dataService.countries$;
+    // this.countries$ = this._dataService.countries$;
+    this._covidService.getSummaryDataListener().subscribe(data => {
+      console.log(data.Countries);
+      this.summary = data;
+      this.countries$ = data.Countries
+      // this._dataService.countries$ = data.Countries;
+      this.spinner = false;
+    },
+    (error) => {
+      this._snakcBar.open(error.message, 'Close');
+      this.spinner = false;
+    });
   }
 
 }

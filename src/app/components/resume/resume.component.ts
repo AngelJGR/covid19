@@ -22,9 +22,7 @@ export class ResumeComponent implements OnInit {
     this._covidService.getSummary();
     this._covidService.getSummaryDataListener()
     .subscribe(data => {
-      console.log(data);
       this.summary = data;
-      // this._dataService.countries$ = data.Countries;
       this.spinner = false;
     },
     (error) => {

@@ -1,4 +1,43 @@
 <h1>Paises</h1>
-<ul>
-    <li *ngFor="let country of countries$">{{country.Country}}</li>
-</ul>
+<!-- <ul>
+    <li *ngFor="let country of countries$">{{country.Country}} - {{country.TotalConfirmed | number}}</li>
+</ul> -->
+
+<table mat-table [dataSource]="countries$" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let country"> 1 </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> Country </th>
+      <td mat-cell *matCellDef="let country"> {{country.Country}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="total cases">
+      <th mat-header-cell *matHeaderCellDef> Total Cases </th>
+      <td mat-cell *matCellDef="let country"> {{country.TotalConfirmed}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="total deaths">
+      <th mat-header-cell *matHeaderCellDef> Total Deaths </th>
+      <td mat-cell *matCellDef="let country"> {{country.TotalDeaths}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="total recovered">
+        <th mat-header-cell *matHeaderCellDef> Total Recovered </th>
+        <td mat-cell *matCellDef="let country"> {{country.TotalRecovered}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

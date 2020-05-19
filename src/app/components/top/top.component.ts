@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidService } from 'src/app/services/covid.service';
 
-import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Country } from 'src/app/interfaces/country';
 
 
 @Component({
@@ -11,22 +11,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./top.component.css']
 })
 export class TopComponent implements OnInit {
-  summary;
+  displayedColumns: string[] = ['position', 'country', 'total cases', 'total deaths', 'total recovered'];
   spinner:boolean = true;
   
   public countries$:any[]=[];
 
-
-  constructor(   public _covidService:CovidService,
-    private _snakcBar:MatSnackBar) { }
+  constructor( 
+    public _covidService:CovidService,
+    private _snakcBar:MatSnackBar
+  ) { }
 
   ngOnInit(): void {
-    // this.countries$ = this._dataService.countries$;
     this._covidService.getSummaryDataListener().subscribe(data => {
       console.log(data.Countries);
-      this.summary = data;
-      this.countries$ = data.Countries
-      // this._dataService.countries$ = data.Countries;
+      this.countries$ = data.Countries;
       this.spinner = false;
     },
     (error) => {

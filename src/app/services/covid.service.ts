@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -15,12 +14,11 @@ export class CovidService {
   getSummary(){
     this._http.get<any>(this.api_url)
     .subscribe((data) => {
-     console.log(data);
-      this.summaryData.next(data)
+      this.summaryData.next(data);
     })
   }
   
   getSummaryDataListener() {
-    return this.summaryData.asObservable()
+    return this.summaryData.asObservable();
   }
 }

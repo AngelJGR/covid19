@@ -1,6 +1,6 @@
 <h1>Worldwide Coronavirus Cases</h1>
 <div class="date">
-    <span>Last updated: {{summary?.Date | date}}</span>
+    <span>Last updated: {{summary?.Date }}</span>
     <mat-spinner *ngIf="_covidService.spinner$" diameter="20"></mat-spinner>
 </div>
 <div class="cards">

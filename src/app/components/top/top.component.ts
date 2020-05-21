@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CovidService } from 'src/app/services/covid.service';
+import { Country } from 'src/app/interfaces/country';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Country } from 'src/app/interfaces/country';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -11,10 +14,11 @@ import { Country } from 'src/app/interfaces/country';
   styleUrls: ['./top.component.css']
 })
 export class TopComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'country', 'total cases', 'total deaths', 'total recovered'];
-  spinner:boolean = true;
-  
-  public countries$:any[]=[];
+  displayedColumns$: string[] = ['position', 'country', 'total cases', 'total deaths', 'total recovered'];
+  countries$ = new MatTableDataSource<Country>();
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor( 
     public _covidService:CovidService,
@@ -23,14 +27,10 @@ export class TopComponent implements OnInit {
 
   ngOnInit(): void {
     this._covidService.getSummaryDataListener().subscribe(data => {
-      console.log(data.Countries);
       this.countries$ = data.Countries;
-      this.spinner = false;
-    },
-    (error) => {
-      this._snakcBar.open(error.message, 'Close');
-      this.spinner = false;
+      this._covidService.spinner$ = false;
+      this.countries$.sort = this.sort;
+      this.countries$.paginator = this.paginator;
     });
   }
-
 }

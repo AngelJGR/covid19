@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const MaterialComponents:Array<any> = [
   MatButtonModule,
@@ -16,7 +17,8 @@ const MaterialComponents:Array<any> = [
   MatDividerModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
-  MatTableModule
+  MatTableModule,
+  MatPaginatorModule
 ]
 
 @NgModule({

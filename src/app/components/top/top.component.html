@@ -3,14 +3,14 @@
     <li *ngFor="let country of countries$">{{country.Country}} - {{country.TotalConfirmed | number}}</li>
 </ul> -->
 
-<table mat-table [dataSource]="countries$" class="mat-elevation-z8">
+<table mat-table [dataSource]="countries$" matSort class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
   
     <!-- Position Column -->
     <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
       <td mat-cell *matCellDef="let country"> 1 </td>
     </ng-container>
   
@@ -22,7 +22,7 @@
   
     <!-- Weight Column -->
     <ng-container matColumnDef="total cases">
-      <th mat-header-cell *matHeaderCellDef> Total Cases </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Cases </th>
       <td mat-cell *matCellDef="let country"> {{country.TotalConfirmed | number}} </td>
     </ng-container>
   
@@ -38,6 +38,8 @@
         <td mat-cell *matCellDef="let country"> {{country.TotalRecovered | number}} </td>
       </ng-container>
   
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns$"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns$;"></tr>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </table>

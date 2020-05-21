@@ -1,8 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CovidService } from 'src/app/services/covid.service';
-import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-resume',
@@ -11,7 +10,6 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ResumeComponent implements OnInit {
   summary;
-  spinner:boolean = true;
   
   constructor( 
     public _covidService:CovidService,
@@ -23,11 +21,11 @@ export class ResumeComponent implements OnInit {
     this._covidService.getSummaryDataListener()
     .subscribe(data => {
       this.summary = data;
-      this.spinner = false;
+      this._covidService.spinner$ = false;
     },
     (error) => {
       this._snakcBar.open(error.message, 'Close');
-      this.spinner = false;
+      this._covidService.spinner$ = false;
     });
   }
 }

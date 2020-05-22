@@ -25,12 +25,6 @@ export class TopComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this._covidService.getSummaryDataListener().subscribe(data => {
-    //   this.countries$ = data.Countries;
-    //   this._covidService.spinner$ = false;
-    //   this.countries$.sort = this.sort;
-    //   this.countries$.paginator = this.paginator;
-    // });
     this._covidService.getSummaryDataListener().pipe(
       map(data => {
         this.countries$ = new MatTableDataSource<Country>();
@@ -44,5 +38,11 @@ export class TopComponent implements OnInit {
         this.countries$.paginator = this.paginator;
       })
     ).subscribe();
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.countries$.filter = filterValue;
   }
 }

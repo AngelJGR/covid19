@@ -1,9 +1,12 @@
 <h1>Paises</h1>
+
+<mat-form-field>
+  <mat-label>Filtro</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Country">
+</mat-form-field>
+
 <div class="mat-elevation-z8">
 <table mat-table [dataSource]="countries$" matSort>
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
   
     <!-- Position Column -->
     <ng-container matColumnDef="position">

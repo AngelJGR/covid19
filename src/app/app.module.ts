@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResumeComponent } from './components/resume/resume.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { TopComponent } from './components/top/top.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TopComponent } from './components/top/top.component';
     HeaderComponent,
     ResumeComponent,
     ChartsComponent,
-    TopComponent
+    TopComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

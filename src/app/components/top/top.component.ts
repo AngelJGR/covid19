@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./top.component.css']
 })
 export class TopComponent implements OnInit {
-  displayedColumns$: string[] = ['position', 'country', 'total cases', 'total deaths', 'total recovered'];
+  displayedColumns$: string[] = ['position', 'country', 'total cases', 'total deaths', '% deaths', 'total recovered', '% recovered'];
   countries$;
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

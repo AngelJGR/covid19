@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./top.component.css']
 })
 export class TopComponent implements OnInit {
-  displayedColumns$: string[] = ['position', 'country', 'total cases', 'total deaths', '% deaths', 'total recovered', '% recovered'];
+  displayedColumns$: string[] = ['position', 'flag', 'country', 'total cases', 'total deaths', '% deaths', 'total recovered', '% recovered'];
   countries$;
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -33,6 +33,7 @@ export class TopComponent implements OnInit {
           if (a.TotalConfirmed > b.TotalConfirmed) return -1;
           return 0;
         });
+        console.log(data.Countries);
         this._covidService.spinner$ = false;
         this.countries$.sort = this.sort;
         this.countries$.paginator = this.paginator;

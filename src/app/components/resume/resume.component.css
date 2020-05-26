@@ -1,11 +1,13 @@
 h1 {
     font-weight: bolder;
     line-height: 50px;
+    transition: .3s;
 }
 
 .date {
     display: flex;
     flex-flow: row;
+    transition: .3s;
 }
 
 .cards {

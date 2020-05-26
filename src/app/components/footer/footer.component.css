@@ -1,13 +1,96 @@
-mat-toolbar {
-  margin-top: 40px;
-  height: 100px;
+
+mat-toolbar mat-toolbar-row {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 60px 10px 60px;
 }
 
-.example-icon {
-  padding: 0 14px;
+mat-toolbar mat-toolbar-row > span {
+  height: auto;
+  width: 60%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 10px 0;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
+.social {
+  height: auto;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.social .subText {
+  font-size: 1rem;
+  padding-bottom: 6px;
+}
+
+.social .subSocial {
+  display: flex;
+  flex-direction: row;
+}
+
+.social .subSocial .socialContent {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.social .subSocial .socialContent span {
+  font-size: 0.8rem;
+}
+
+.social .subSocial .socialContent > a {
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.social .subSocial .socialContent > a:hover {
+  transform: scale(1.2);
+}
+
+.social .subSocial .socialContent > a > i {
+  font-size: 2rem;
+  color: #666666;
+  transition: .4s;
+}
+
+.social .subSocial .socialContent > a:hover > i {
+  color: #3f51b5;
+}
+
+.api {
+  height: auto;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.api .apiLogo {
+  display: flex;
+  align-items: center;
+}
+
+.api .apiLogo a {
+  display: flex;
+  align-items: center;
+}
+
+.api .apiLogo a > img {
+  padding-left: 8px;
 }
 

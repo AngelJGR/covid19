@@ -33,7 +33,6 @@ export class TopComponent implements OnInit {
           if (a.TotalConfirmed > b.TotalConfirmed) return -1;
           return 0;
         });
-        console.log(data.Countries);
         this._covidService.spinner$ = false;
         this.countries$.sort = this.sort;
         this.countries$.paginator = this.paginator;

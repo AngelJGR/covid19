@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as CamvasJS from '../../../assets/js/canvasjs.min';
+import { Chart } from 'chart.js'
 
 @Component({
   selector: 'app-charts',
@@ -8,55 +8,62 @@ import * as CamvasJS from '../../../assets/js/canvasjs.min';
 })
 export class ChartsComponent implements OnInit {
 
+  LineChart = [];
+  options = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  };
+  dataDeaths = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [
+      {
+        label: "Confirmed",
+        fill: false,
+        borderColor: '#2576f0',
+        data: [
+          { x: 'January', y: 10 },
+          { x: 'February', y: 6 },
+          { x: 'March', y: 15 },
+          { x: 'April', y: 2 },
+          { x: 'May', y: 11 },
+          { x: 'June', y: 14 },
+          { x: 'July', y: 7 }
+        ]
+      },
+      {
+        label: "Deaths",
+        fill: false,
+        borderColor: 'rgb(250, 63, 123)',
+        data: [
+          { x: 'January', y: 2 },
+          { x: 'February', y: 1 },
+          { x: 'March', y: 5 },
+          { x: 'April', y: 0 },
+          { x: 'May', y: 1 },
+          { x: 'June', y: 4 },
+          { x: 'July', y: 2 }
+        ]
+      }
+    ]
+  }
+
   constructor() { }
 
-  options = {
-    animationEnabled: true,
-    exportEnabled: true,
-    data: [{
-      name: "Confirmed",
-      showInLegend: true,
-      legendMarkerType: "square",
-      type: "area",
-      color: "rgba(0,75,141,0.7)",
-      markerSize: 0,
-      dataPoints: [
-        { y: 71, label: "Apple" },
-        { y: 55, label: "Mango" },
-        { y: 50, label: "Orange" },
-        { y: 65, label: "Banana" },
-        { y: 95, label: "Pineapple" },
-        { y: 68, label: "Pears" },
-        { y: 28, label: "Grapes" },
-        { y: 34, label: "Lychee" },
-        { y: 14, label: "Jackfruit" }
-      ]
-    },
-    {
-      name: "Deaths",
-      showInLegend: true,
-      legendMarkerType: "circle",
-      type: "area",
-      color: "rgba(40,175,101,0.6)",
-      markerSize: 0,
-      dataPoints: [
-        { y: 61, label: "Apple" },
-        { y: 45, label: "Mango" },
-        { y: 40, label: "Orange" },
-        { y: 55, label: "Banana" },
-        { y: 85, label: "Pineapple" },
-        { y: 58, label: "Pears" },
-        { y: 18, label: "Grapes" },
-        { y: 24, label: "Lychee" },
-        { y: 4, label: "Jackfruit" }
-      ]
-    }]
-  }
   ngOnInit(): void {
-    let chart = new CamvasJS.Chart("chartContainer", this.options);
-    let chart2 = new CamvasJS.Chart("chartContainer2", this.options);
-    chart.render();
-    chart2.render();
+
+    this.LineChart = new Chart('deathChart',
+      {
+        type: 'line',
+        data: this.dataDeaths,
+        options: this.options
+      }
+    );
   }
 
 }

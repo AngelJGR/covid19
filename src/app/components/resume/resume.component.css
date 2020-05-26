@@ -1,5 +1,4 @@
 h1 {
-    padding-top: 30px;
     font-weight: bolder;
     line-height: 50px;
 }
@@ -10,7 +9,7 @@ h1 {
 }
 
 .cards {
-    padding: 60px 40px 0 40px;
+    padding: 60px 40px 100px 40px;
     margin: 0px 20px;
     display: flex;
     flex-direction: row;
@@ -34,11 +33,11 @@ h1 {
  .cards .card .card-title {
     grid-area: title;
     position: relative;
-    background: #2282ba;
+    background: #3f51b5;
     color: #fff;
-    font-size: 1rem;
-    line-height: 0.9rem;
     text-align: left;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
  .cards .card .card-title i {
@@ -54,14 +53,14 @@ h1 {
     position: absolute;
     bottom: 0;
     left: 10px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     line-height: 3rem;
     font-weight: 200;
 }
 
 .cards .card .card-number {
     grid-area: number;
-    /* position: relative; */
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,12 +68,13 @@ h1 {
     line-height: 1.9rem;
     font-weight: bolder;
     text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.cards .card .card-number span {
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-    font-size: 1.7rem;
+.cards .card .card-number > span {
+    font-family: Work Sans,Open Sans,Helvetica,Arial,sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    color: #3d3d3d;
 }

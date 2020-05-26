@@ -18,6 +18,7 @@ export class ResumeComponent implements OnInit {
   
   ngOnInit() {
     this._covidService.getSummary();
+    // this._covidService.spinner$ = false;
     this._covidService.getSummaryDataListener()
     .subscribe(data => {
       this.summary = data;

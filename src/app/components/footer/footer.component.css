@@ -3,7 +3,7 @@ mat-toolbar mat-toolbar-row {
   height: auto;
   display: flex;
   flex-direction: column;
-  padding: 10px 60px 10px 60px;
+  padding: 10px 10px;
 }
 
 mat-toolbar mat-toolbar-row > span {
@@ -31,6 +31,8 @@ mat-toolbar mat-toolbar-row > span {
 .social .subSocial {
   display: flex;
   flex-direction: row;
+  flex-flow: wrap;
+  justify-content: center;
 }
 
 .social .subSocial .socialContent {
@@ -78,6 +80,7 @@ mat-toolbar mat-toolbar-row > span {
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
+  transition: .3s;
 }
 
 .api .apiLogo {
@@ -94,3 +97,26 @@ mat-toolbar mat-toolbar-row > span {
   padding-left: 8px;
 }
 
+@media (max-width: 900px) {
+  .api {
+    width: 60%;
+  }
+}
+
+@media (max-width: 700px) {
+  mat-toolbar mat-toolbar-row > span, .api, .social {
+    width: 80%;
+  }
+}
+
+@media (max-width: 550px) {
+  mat-toolbar mat-toolbar-row > span, .api, .social {
+    width: 90%;
+  }
+}
+
+/* @media (max-width: 455px) {
+  .social .subSocial .socialContent {
+    margin: 10px;
+  }
+} */

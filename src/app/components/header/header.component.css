@@ -5,7 +5,20 @@ mat-toolbar-row {
 }
 
 mat-toolbar-row > img {
-  padding: 12px;
+  padding: 12px 0;
   display: block;
   align-self: auto;
+  transition: .5s;
+}
+
+@media (max-width: 820px) {
+  mat-toolbar-row > img {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 550px) {
+  mat-toolbar-row > img {
+    transform: scale(0.9);
+  }
 }

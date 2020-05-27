@@ -1,5 +1,9 @@
 # Covid19
 
+Este proyecto muestra la data de los casos de coronavirus a nivel mundial, en resumen global, y por paises
+
+This project shows the worldwide coronavirus cases data, by global summary, and countries.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
 
 ## Development server

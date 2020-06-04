@@ -1,6 +1,7 @@
 # Covid19
+# Deployed in https://covid19worldcases.herokuapp.com/
 
-Este proyecto muestra la data de los casos de coronavirus a nivel mundial, en resumen global, y por paises
+Este proyecto muestra la data de los casos de coronavirus a nivel mundial, en resumen global, y por paises.
 
 This project shows the worldwide coronavirus cases data, by global summary, and countries.
 

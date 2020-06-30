@@ -30,12 +30,17 @@ export class TopComponent implements OnInit {
 
     this._covidService.listen(this.eventMessage).pipe(
       map((data:any) => {
-        console.log(data)
         this.countries$ = new MatTableDataSource<Country>();
         this.countries$.data = data.Countries.sort((a,b) => {
           if (a.TotalConfirmed < b.TotalConfirmed) return 1;
           if (a.TotalConfirmed > b.TotalConfirmed) return -1;
           return 0;
+        });
+        let i = 0
+        this.countries$.data.forEach(element => {
+          i += 1;
+          element.position = i;
+          
         });
         this._covidService.spinner$ = false;
         this.countries$.sort = this.sort;

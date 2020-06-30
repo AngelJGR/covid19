@@ -10,7 +10,8 @@
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let i = index"> {{ this.paginator.pageIndex == 0 ? i+1 : (i + this.paginator.pageIndex * this.paginator.pageSize) + 1 }} </td>
+      <!-- <td mat-cell *matCellDef="let i = index"> {{ this.paginator.pageIndex == 0 ? i+1 : (i + this.paginator.pageIndex * this.paginator.pageSize) + 1 }} </td> -->
+      <td mat-cell *matCellDef="let country"> {{ country.position }} </td>
     </ng-container>
   
     <!-- Flag Column -->
@@ -62,6 +63,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns$"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns$;"></tr>
   </table>
-<mat-paginator [pageSizeOptions]="[10, 15, 20]" [pageSize]="10" [showFirstLastButtons]></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10, 15, 20, 40]" [pageSize]="10" [showFirstLastButtons]></mat-paginator>
 
 </div>

@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const morgan = require('morgan');
 const fetch = require('node-fetch');
 const SocketIO = require('socket.io');
 const app = express();
@@ -11,8 +10,6 @@ app.use(express.static(__dirname+'/dist/covid19'));
 app.get('/', function(req,res){
     res.sendFile(path.join(__dirname+'/dist/covid19/index.html'));
 });
-
-app.use(morgan("tiny"));
 
 // Iniciando los procesos para que el Servidor consuma la API y la pase al frontend
 

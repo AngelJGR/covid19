@@ -16,6 +16,8 @@ import { map } from 'rxjs/operators';
 export class TopComponent implements OnInit {
   displayedColumns$: string[] = ['position', 'flag', 'country', 'total cases', 'total deaths', '% deaths', 'total recovered', '% recovered'];
   countries$;
+  eventMessage:string = "covid data";
+  errorData:string = "";
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -25,10 +27,12 @@ export class TopComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._covidService.getSummaryDataListener().pipe(
-      map(data => {
+
+    this._covidService.listen(this.eventMessage).pipe(
+      map((data:any) => {
+        console.log(data)
         this.countries$ = new MatTableDataSource<Country>();
-        this.countries$.data =data.Countries.sort((a,b) => {
+        this.countries$.data = data.Countries.sort((a,b) => {
           if (a.TotalConfirmed < b.TotalConfirmed) return 1;
           if (a.TotalConfirmed > b.TotalConfirmed) return -1;
           return 0;
@@ -38,6 +42,7 @@ export class TopComponent implements OnInit {
         this.countries$.paginator = this.paginator;
       })
     ).subscribe();
+    
   }
 
   applyFilter(filterValue: string) {
